@@ -1,3 +1,5 @@
+// Vue.config.productionTip = false
+
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
@@ -12,9 +14,13 @@ import details from './page/details.vue'  //详情
 import cart from './page/cart.vue'//购物车
 import order from './page/order.vue'//订单
 
-// Vue.config.productionTip = false
 
-Vue.use(VueRouter);
+// 引入UI框架
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+Vue.use(MintUI) // 使用UI框架
+Vue.use(VueRouter); // 使用UI框架
 
 const router = new VueRouter({
   routes: [
