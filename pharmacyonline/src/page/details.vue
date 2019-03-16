@@ -1,6 +1,6 @@
 <template>
-  <div class="goods">
-    <vanheader></vanheader>
+  <div>
+    <vanheader>商品详情</vanheader>
     <van-swipe class="goods-swipe" :autoplay="3000">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
         <img :src="thumb">
@@ -28,20 +28,23 @@
     </van-cell-group>
 
     <van-cell-group class="goods-cell-group">
-      <van-cell title="查看商品详情" is-link @click="sorry"/>
+      <van-cell title="查看商品详情" is-link @click="details"/>
     </van-cell-group>
 
-    <van-goods-action>
-      <van-goods-action-mini-btn icon="chat-o" @click="sorry">客服</van-goods-action-mini-btn>
+    <van-goods-action class="goodsgroup" style="margin-bottom:60px">
+      <van-goods-action-mini-btn icon="chat-o" @click="customer">客服</van-goods-action-mini-btn>
       <van-goods-action-mini-btn icon="cart-o" @click="onClickCart">购物车</van-goods-action-mini-btn>
-      <van-goods-action-big-btn @click="sorry">加入购物车</van-goods-action-big-btn>
-      <van-goods-action-big-btn primary @click="sorry">立即购买</van-goods-action-big-btn>
+      <van-goods-action-big-btn @click="addcart">加入购物车</van-goods-action-big-btn>
+      <van-goods-action-big-btn primary @click="bay">立即购买</van-goods-action-big-btn>
     </van-goods-action>
+
+    <vanfooter></vanfooter>
   </div>
 </template>
 
 <script>
-import vanheader from "../components/vanheader.vue"; //订单
+import vanheader from "../components/vanheader.vue"; //头部
+import vanfooter from "../components/vanfooter"; //底部
 // import // Tag,
 // // Col,
 // // Icon,
@@ -66,7 +69,8 @@ export default {
     // [GoodsAction.name]: GoodsAction,
     // [GoodsActionBigBtn.name]: GoodsActionBigBtn,
     // [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
-    vanheader
+    vanheader,
+    vanfooter
   },
   data() {
     return {
@@ -86,9 +90,29 @@ export default {
     formatPrice() {
       // return "¥" + (this.goods.price / 100).toFixed(2);
     },
+
+    // 去购物车
     onClickCart() {
-      this.$router.push("cart");
+      this.$router.push("/cart");
     },
+
+    // 客服
+    customer() {},
+
+    // 加入购物车
+    addcart() {
+      this.$router.push("/cart");
+    },
+
+    // 立即购买
+    bay() {
+      this.$router.push("/order");
+    },
+
+    //商品详情
+    details() {},
+
+    // 其他
     sorry() {}
   }
 };
@@ -125,5 +149,9 @@ export default {
   &-tag {
     margin-left: 5px;
   }
+}
+
+.goodsgroup {
+  position: unset !important;
 }
 </style>

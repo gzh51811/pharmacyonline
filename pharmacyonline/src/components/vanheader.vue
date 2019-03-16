@@ -1,8 +1,8 @@
 <template>
   <div>
-    <slot></slot>
+    {{set()}}
     <van-nav-bar
-      title="登录"
+      :title="aslots"
       left-text="返回"
       right-text="首页"
       left-arrow
@@ -14,13 +14,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      aslots: "1"
+    };
+  },
+
   methods: {
     onClickLeft() {
-      this.$router.go({ path: "/home" });
       this.$router.go("-1");
     },
     onClickRight() {
       this.$router.push({ path: "/home" });
+    },
+    set() {
+      let so = this.$slots.default;
+      this.aslots = so[0].text;
     }
   }
 };

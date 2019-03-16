@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import vanheader from "../components/vanheader";
+import vanheader from "../components/vanheader"; //头部
+
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
 export default {
   components: {

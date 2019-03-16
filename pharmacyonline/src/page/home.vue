@@ -1,7 +1,14 @@
 <template>
-  <div>首页</div>
+  <div>首页
+    <vanfooter></vanfooter>
+  </div>
 </template>
 
 <script>
-export default {};
+import vanfooter from "../components/vanfooter"; //底部
+export default {
+  components: {
+    vanfooter
+  }
+};
 </script>
