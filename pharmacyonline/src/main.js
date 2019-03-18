@@ -5,6 +5,12 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+
+
+
 // 引入页面
 import home from './page/home.vue'//首页
 import login from './page/login.vue'//登录
@@ -16,10 +22,9 @@ import order from './page/order.vue'//订单
 
 
 // 引入UI框架
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
 
-Vue.use(MintUI) // 使用UI框架
+
+Vue.use(Vant); // 使用UI框架
 Vue.use(VueRouter); // 使用UI框架
 
 const router = new VueRouter({
