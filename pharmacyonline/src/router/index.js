@@ -13,6 +13,9 @@ import cart from '../page/cart.vue'//购物车
 import order from '../page/order.vue'//订单
 import wode from '../page/wode.vue'//个人中心
 import goodslist from '../page/goodslist.vue'//商品列表
+import address from '../page/address.vue'//地址
+import edit_address from '../page/edit_address.vue'//编辑地址
+import userSet_up from '../page/userSet_up.vue'//用户设置
 
 
 const router = new VueRouter({
@@ -27,6 +30,9 @@ const router = new VueRouter({
         { path: '/order', name: '/order', component: order },//订单
         { path: '/wode', name: '/wode', component: wode },//个人中心
         { path: '/goodslist', name: '/goodslist', component: goodslist },//商品列表
+        { path: '/address', component: address },//地址
+        { path: '/edit_address', component: edit_address },//编辑地址
+        { path: '/userSet_up', component: userSet_up },//用户设置
         { path: '/*', name: '/*', component: home },//首页
     ]
 })
