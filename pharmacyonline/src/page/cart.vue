@@ -123,4 +123,7 @@ export default {
 .van-submit-bar {
   bottom: 10% !important;
 }
+.card-goods {
+  padding: 46px 0;
+}
 </style>

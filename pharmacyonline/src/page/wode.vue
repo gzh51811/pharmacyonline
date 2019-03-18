@@ -6,8 +6,13 @@
       <div class="touxinag">
         <img src="../assets/image/touxinag.png" alt>
       </div>
-      <div>
-        <p>嗨嗨HIAaa</p>
+      <div class="zhanghushezhi">
+        <router-link to>
+          <p>
+            嗨嗨HIAaa
+            <span>》</span>
+          </p>
+        </router-link>
       </div>
     </div>
 
@@ -81,13 +86,35 @@ export default {
 
 .head-bar {
   background: #1981d6;
-  height: 100px;
-  .touxinag {
-    width: 30%;
-    background: #fff;
+  height: auto;
+  overflow: hidden;
+  padding-top: 45px;
 
+  .touxinag {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    margin: 20px;
+    border-radius: 50%;
     img {
-      width: 50%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .zhanghushezhi {
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+    float: right;
+
+    p {
+      line-height: 70px;
+      color: #fff;
+      padding-right: 10px;
+      span {
+        float: right;
+      }
     }
   }
 }

@@ -34,3 +34,9 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+.van-nav-bar {
+  position: fixed;
+  width: 100%;
+}
+</style>
