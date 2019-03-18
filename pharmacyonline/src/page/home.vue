@@ -1921,5 +1921,5 @@ export default {
   color: #ffffff;
   opacity: 0.8;
   margin-bottom: 1.86667rem;
-}
+};
 </style>
