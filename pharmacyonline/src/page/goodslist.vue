@@ -83,16 +83,16 @@ export default {
           break;
       }
     },
-    created(){
-      axios({
-  method:'get',
-  url:'http://bit.ly/2mTM3nY',
-  responseType:'stream'
-})
-  .then(function(response) {
-  response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-});
-    }
+    //     created(){
+    //       axios({
+    //   method:'get',
+    //   url:'http://bit.ly/2mTM3nY',
+    //   responseType:'stream'
+    // })
+    //   .then(function(response) {
+    //   response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+    // });
+    // }
     checked(n) {
       this.ok2 = this.ok3 = this.ok4 = this.ok1 = false;
       console.log(this.ok1);
