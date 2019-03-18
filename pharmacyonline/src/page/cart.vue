@@ -18,11 +18,14 @@
       :button-text="submitBarText"
       @submit="onSubmit"
     />
+
+    <vanfooter/>
   </div>
 </template>
 
 <script>
 import vanheader from "../components/vanheader"; //头部
+import vanfooter from "../components/vanfooter"; //头部
 
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
 export default {
@@ -31,7 +34,8 @@ export default {
     [Checkbox.name]: Checkbox,
     [SubmitBar.name]: SubmitBar,
     [CheckboxGroup.name]: CheckboxGroup,
-    vanheader
+    vanheader,
+    vanfooter
   },
   data() {
     return {
@@ -115,5 +119,8 @@ export default {
       color: #f44;
     }
   }
+}
+.van-submit-bar {
+  bottom: 10% !important;
 }
 </style>

@@ -1,17 +1,15 @@
 <template>
   <div>
     <!-- 搜索 -->
-    <search/>
+    <searchs>分类</searchs>
+    <van-badge-group :active-key="activeKey" @change="onChange">
+      <van-badge :title="titles[0]"></van-badge>
+      <van-badge :title="titles[1]" info="8">新品上线</van-badge>
+      <van-badge :title="titles[2]" info="99">新品上线</van-badge>
+      <van-badge :title="titles[3]" info="99+">新品上线</van-badge>
+    </van-badge-group>
 
-    <van-tree-select
-      :items="items"
-      :main-active-index="mainActiveIndex"
-      :active-id="activeId"
-      @navclick="onNavClick"
-      @itemclick="onItemClick"
-      :height="height"
-    />
-
+    <listselect :date="item" :toptitle="titleinfo"></listselect>
     <!-- 底部 -->
     <vanfooter/>
   </div>
@@ -19,195 +17,67 @@
 
 <script>
 import vanfooter from "../components/vanfooter"; //底部
-import search from "../components/search"; //底部
+import searchs from "../components/search"; //底部
+import listselect from "../components/listselect"; //分类商品
+
 export default {
   data() {
     return {
-      height: 500,
-      items: [
-        {
-          text: "必入尖货",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1
-              // 禁用选项
-              // disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            },
-            {
-              text: "杭州",
-              id: 3
-            },
-            {
-              text: "杭州",
-              id: 4
-            }
-          ]
-        },
-        {
-          text: "新品上线",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "营养保健",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "母婴产品",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "美妆个护",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "美妆个护",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "洗护日用",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        },
-        {
-          text: "家庭常备",
-          children: [
-            {
-              // 名称
-              text: "温州",
-              // id，作为匹配选中状态的标识
-              id: 1,
-              // 禁用选项
-              disabled: true
-            },
-            {
-              text: "杭州",
-              id: 2
-            }
-          ]
-        }
-      ],
-      // 左侧高亮元素的index
-      mainActiveIndex: 0,
-      // 被选中元素的id
-      activeId: 1
+      activeKey: 0,
+      item: [1, 2, 2],
+      titles: ["新品上线", "新上线", "新品", "新线"],
+      titleinfo: "新品上线"
     };
   },
+
   methods: {
-    onNavClick(index) {
-      this.mainActiveIndex = index;
-    },
-    onItemClick(data) {
-      this.activeId = data.id;
+    onChange(key) {
+      this.activeKey = key;
+      switch (this.activeKey) {
+        case 0:
+          this.item = [{ title: "新品上市" }, 12, 234, 2];
+          this.titleinfo = this.titles[0];
+
+          break;
+        case 1:
+          this.item = [{ title: "营养保健" }, 12, 1, 123, 6, 3, 4];
+          this.titleinfo = this.titles[1];
+
+          break;
+        case 2:
+          this.item = [{ title: "营养保健" }, 3];
+          this.titleinfo = this.titles[2];
+          break;
+        case 3:
+          this.item = [{ title: "营养保健" }, 12, 3];
+          this.titleinfo = this.titles[3];
+          break;
+        case 4:
+          this.item = [{ title: "营养保健" }, 12, 1, 6, 3];
+          this.titleinfo = this.titles[4];
+          break;
+        case 5:
+          this.titleinfo = this.titles[5];
+          this.item = [{ title: "营养保健" }, 12, 1, 123, 6, 3];
+          break;
+      }
     }
   },
   components: {
     vanfooter,
-    search
+    searchs,
+    listselect
   }
 };
 </script>
 
 
 <style lang="less" scoped>
-.van-tree-select__nitem {
-  line-height: 84px;
-  padding-left: 30px;
-}
-.van-tree-select__item {
-  width: 50%;
-  text-align: center;
-
-  line-height: 84px;
-  height: 30%;
-}
-.van-tree-select__content {
-  display: flex;
-  flex-wrap: wrap;
-
-  column-gap: 20px;
+[class*="van-hairline"] {
+  position: relative;
+  width: 55%;
+  a {
+    margin-right: 0;
+  }
 }
 </style>
