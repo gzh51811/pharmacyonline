@@ -19,8 +19,14 @@
         <selective :data="item" v-on:checked="checked"></selective>
       </van-tab>
     </van-tabs>
+
     <!-- 单个商品 -->
     <goods :data="goods"></goods>
+
+    <!-- 购物车图标 -->
+    <div class="gouwuche">
+      <van-icon name="cart-circle" info="0" size="40px" color="red"/>
+    </div>
     <vanfooter></vanfooter>
   </div>
 </template>
@@ -77,6 +83,16 @@ export default {
           break;
       }
     },
+    created(){
+      axios({
+  method:'get',
+  url:'http://bit.ly/2mTM3nY',
+  responseType:'stream'
+})
+  .then(function(response) {
+  response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+});
+    }
     checked(n) {
       this.ok2 = this.ok3 = this.ok4 = this.ok1 = false;
       console.log(this.ok1);
@@ -84,3 +100,15 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+.gouwuche {
+  position: fixed;
+  bottom: 50px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background: rgb(233, 233, 233);
+  right: 5%;
+}
+</style>
