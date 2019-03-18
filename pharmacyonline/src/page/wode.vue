@@ -1,10 +1,16 @@
 <template>
   <div>
     <vanheader>个人中心</vanheader>
-    <img
-      class="user-poster"
-      src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png"
-    >
+
+    <div class="head-bar">
+      <div class="touxinag">
+        <img src="../assets/image/touxinag.png" alt>
+      </div>
+      <div>
+        <p>嗨嗨HIAaa</p>
+      </div>
+    </div>
+
     <van-row class="user-links">
       <van-col span="6">
         <van-icon name="pending-payment"/>待付款
@@ -69,6 +75,19 @@ export default {
     .van-icon {
       display: block;
       font-size: 24px;
+    }
+  }
+}
+
+.head-bar {
+  background: #1981d6;
+  height: 100px;
+  .touxinag {
+    width: 30%;
+    background: #fff;
+
+    img {
+      width: 50%;
     }
   }
 }

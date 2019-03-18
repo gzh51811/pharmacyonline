@@ -1,7 +1,13 @@
 <template>
   <div>
     {{aslots()}}
-    <van-nav-bar :title="slo" left-text="返回" left-arrow v-if="!searchstatic">
+    <van-nav-bar
+      :title="slo"
+      @click-left="onClickLeft"
+      left-text="返回"
+      left-arrow
+      v-if="!searchstatic"
+    >
       <van-icon name="search" slot="right" @click="search()"/>
     </van-nav-bar>
     <form action="/" v-if="searchstatic">
@@ -39,6 +45,9 @@ export default {
     onSearch() {},
     aslots() {
       this.slo = this.$slots.default[0].text;
+    },
+    onClickLeft() {
+      this.$router.go("-1");
     }
   }
 };

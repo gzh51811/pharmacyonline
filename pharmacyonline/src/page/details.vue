@@ -101,7 +101,16 @@ export default {
 
     // 加入购物车
     addcart() {
-      this.$router.push("/cart");
+      this.$dialog.alert({
+        message: "加入成功"
+      });
+    },
+     beforeClose(action, done) {
+      if (action === 'confirm') {
+        setTimeout(done, 1000);
+      } else {
+        done();
+      }
     },
 
     // 立即购买

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <van-list :finished="finished" finished-text="没有更多了">
-      <van-cell v-for="item in data" :key="item" :title="item"/>
+    <van-list :finished="finished" finished-text="没有更多了" class="van-list">
+      <van-cell @click="check(item)" v-for="item in data" :key="item" :title="item"/>
     </van-list>
   </div>
 </template>
@@ -10,11 +10,22 @@
 export default {
   data() {
     return {
-      list: [1, 3, 4, 5],
       finished: false
     };
   },
-  props: ["data"]
+  props: ["data"],
+  methods: {
+    check(item) {
+      console.log(item);
+      this.$emit("checked", false);
+    }
+  }
 };
 </script>
 
+<style lang="less">
+.van-list {
+  height: 500px;
+  background: rgba(27, 26, 26, 0.1);
+}
+</style>

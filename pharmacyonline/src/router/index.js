@@ -17,18 +17,35 @@ import goodslist from '../page/goodslist.vue'//商品列表
 
 const router = new VueRouter({
     routes: [
-        { path: '/', component: home },//首页
-        { path: '/home', component: home },//首页
-        { path: '/login', component: login },//登录
-        { path: '/register', component: register },//注册
-        { path: '/list', component: list },//列表
-        { path: '/details', component: details }, //详情
-        { path: '/cart', component: cart },//购物车
-        { path: '/order', component: order },//订单
-        { path: '/wode', component: wode },//个人中心
-        { path: '/goodslist', component: goodslist },//商品列表
-        // { path: '/*', component: home },//首页
+        { path: '/', name: 'detail', component: home },//首页
+        { path: '/home', name: '/home', component: home },//首页
+        { path: '/login', name: '/login', component: login },//登录
+        { path: '/register', name: '/register', component: register },//注册
+        { path: '/list', name: '/list', component: list },//列表
+        { path: '/details', name: '/details', component: details }, //详情
+        { path: '/cart', name: '/cart', component: cart },//购物车
+        { path: '/order', name: '/order', component: order },//订单
+        { path: '/wode', name: '/wode', component: wode },//个人中心
+        { path: '/goodslist', name: '/goodslist', component: goodslist },//商品列表
+        { path: '/*', name: '/*', component: home },//首页
     ]
+})
+
+router.beforeEach((to, from, next) => {
+    // let name = localStorage.getItem('name');
+    let name = true;
+    if (!name) {
+        if (to.path != '/cart' && to.path != '/wode') {
+            next();
+        } else {
+            alert('您还没有登录');
+            next('/login');
+            return
+        }
+        next();
+    } else {
+        next();
+    }
 })
 
 export default router;
