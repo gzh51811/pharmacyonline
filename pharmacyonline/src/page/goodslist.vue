@@ -62,6 +62,30 @@ export default {
       ]
     };
   },
+
+  created() {
+    console.log("response");
+    this.$axios({
+      method: "get",
+      url: "https:/www.nanshing.com/cobile/index.php",
+      // params: {
+      //   page: 1,
+      //   pageSize: 10,
+      //   aggs: 1,
+      //   cid: 6604,
+      //   sort: "top"
+      // }
+      act: "goods",
+      op: "goods_list",
+      keyword: "",
+      page: 10,
+      curpage: 1
+    }).then(function(response) {
+      // response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
+      console.log(response);
+    });
+  },
+
   methods: {
     show() {
       switch (this.active) {
@@ -83,16 +107,23 @@ export default {
           break;
       }
     },
-    //     created(){
-    //       axios({
-    //   method:'get',
-    //   url:'http://bit.ly/2mTM3nY',
-    //   responseType:'stream'
-    // })
-    //   .then(function(response) {
-    //   response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-    // });
-    // }
+    // created() {
+    //   console.log("ererer");
+    //   // axios
+    //   //   .get("https:/www.nanshing.com/cobile/index.php", {
+    //   //     params: {
+    //   //       act: "goods",
+    //   //       op: "goods_list",
+    //   //       keyword: "",
+    //   //       page: 10,
+    //   //       curpage: 1
+    //   //     }
+    //   //   })
+    //   //   .then(function(response) {
+    //   //     // response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
+    //   //     console.log(response);
+    //   //   });
+    // },
     checked(n) {
       this.ok2 = this.ok3 = this.ok4 = this.ok1 = false;
       console.log(this.ok1);
