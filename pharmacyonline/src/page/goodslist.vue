@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:#eef">
     <search>商品列表</search>
 
     <van-tabs v-model="active" @click="show">
@@ -7,7 +7,7 @@
         <selective v-show="ok1" :data="comprehensive" v-on:checked="checked"></selective>
       </van-tab>
 
-      <van-tab title="排序" v-show="ok2">
+      <van-tab title="品牌" v-show="ok2">
         <selective :data="item" v-on:checked="checked"></selective>
       </van-tab>
 
@@ -36,7 +36,6 @@ import vanfooter from "../components/vanfooter"; //底部
 import search from "../components/search"; //头部
 import selective from "../components/selective"; //选项
 import goods from "../components/goods"; //商品
-import { nfapply } from "q";
 export default {
   components: {
     vanfooter,
@@ -62,6 +61,22 @@ export default {
       ]
     };
   },
+
+  created() {
+    this.$axios
+      .get("/hj/pc/goods/gcGoods", {
+        params: {
+          gc_id: 1,
+          limit: 60,
+          offset: 0
+        }
+      })
+      .then(res => {
+        this.goods = res.data.goods_info;
+        console.log(this.goods);
+      });
+  },
+
   methods: {
     show() {
       switch (this.active) {
@@ -83,19 +98,10 @@ export default {
           break;
       }
     },
-    //     created(){
-    //       axios({
-    //   method:'get',
-    //   url:'http://bit.ly/2mTM3nY',
-    //   responseType:'stream'
-    // })
-    //   .then(function(response) {
-    //   response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-    // });
-    // }
-    checked(n) {
+
+    checked() {
       this.ok2 = this.ok3 = this.ok4 = this.ok1 = false;
-      console.log(this.ok1);
+      // console.log(this.ok1);
     }
   }
 };

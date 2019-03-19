@@ -10,6 +10,15 @@
           :price="formatPrice(item.price)"
           :thumb="item.thumb"
         />
+
+        <el-input-number
+          v-model="item.num"
+          @change="handleChange"
+          size="mini"
+          :min="1"
+          :max="100"
+          label
+        ></el-input-number>
       </van-checkbox>
     </van-checkbox-group>
     <van-submit-bar
@@ -28,6 +37,7 @@ import vanheader from "../components/vanheader"; //头部
 import vanfooter from "../components/vanfooter"; //头部
 
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
+
 export default {
   components: {
     [Card.name]: Card,
@@ -39,7 +49,7 @@ export default {
   },
   data() {
     return {
-      checkedGoods: ["1", "2", "3"],
+      checkedGoods: [],
       goods: [
         {
           id: "1",
@@ -68,18 +78,24 @@ export default {
           thumb:
             "https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg"
         }
-      ]
+      ],
+      num1: []
     };
   },
+
   computed: {
     submitBarText() {
       const count = this.checkedGoods.length;
       return "结算" + (count ? `(${count})` : "");
     },
+
     totalPrice() {
       return this.goods.reduce(
         (total, item) =>
-          total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0),
+          total +
+          (this.checkedGoods.indexOf(item.id) !== -1
+            ? item.price * item.num
+            : 0),
         0
       );
     }
@@ -88,8 +104,15 @@ export default {
     formatPrice(price) {
       return (price / 100).toFixed(2);
     },
+
     onSubmit() {
       Toast("点击结算");
+    },
+
+    // 加减
+    handleChange(value) {
+      this.checkedGoods = [];
+      // console.log(value);
     }
   }
 };
@@ -125,5 +148,11 @@ export default {
 }
 .card-goods {
   padding: 46px 0;
+}
+
+.el-input-number {
+  right: 0;
+  right: -191px;
+  top: -61px;
 }
 </style>

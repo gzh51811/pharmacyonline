@@ -1602,15 +1602,19 @@
 		     	2016 EDC -Internet
 		    </div>
     </div>
-    
+    <vanfooter/>
   </div>
 </template>
 <script>
+import vanfooter  from  '../components/vanfooter';
 export default {
   data() {
     return {
       activeNames: ["1"]
     };
+  },
+  components:{
+      vanfooter
   }
 };
 </script>

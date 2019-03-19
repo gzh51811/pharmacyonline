@@ -7,7 +7,7 @@
         <img src="../assets/image/touxinag.png" alt>
       </div>
       <div class="zhanghushezhi">
-        <router-link to>
+        <router-link to="/userSet_up">
           <p>
             嗨嗨HIAaa
             <span>》</span>

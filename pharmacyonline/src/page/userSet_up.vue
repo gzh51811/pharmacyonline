@@ -1,75 +1,82 @@
 <template>
   <div>
-    <div class="header">
-               
-                 <div class="header-button-left"><i data-v-1db67ffc="" class="van-icon van-icon-arrow-left van-nav-bar__arrow"> <a href="javascript:"></a><!----></i> </div>
-                <h1>账户设置</h1>
-                <div class="header-button-right">
-                    <a href="/" class="home " ><i class="iconfont icon-yuebao"></i></a>
-                </div>
-    </div>
+    <vanheader>账户设置</vanheader>
+
     <div class="white"></div>
     <section class="main">
       <ul>
-			<li class="menu-box-li first">
-				<a href="javascript:void(0);">
-					<span class="li-left-wrap">头像</span>
-					<em class="li-right-wrap">
-						<img class="little-userImg" src="https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/customer/default_user.png" alt="">
-					</em>
-				</a>
-			</li>
-			<li class="menu-box-li">
-				<a href="">
-					<span class="li-left-wrap">昵称</span>
-					<em class="li-right-wrap">
-						<span>1552876861</span>
-					</em>
-				</a>
-                   <i>&gt;</i>
-			</li>
-			<li class="menu-box-li">
-                                    <a href="">
-                        <span class="li-left-wrap">绑定手机</span>
-                        <em class="li-right-wrap">
-                            <span>130****1906</span>
-                               
-                        </em> 
-                    </a>
-               <i>&gt;</i>
-                			</li>
-			<li class="menu-box-li ">
-                                                            <a href="
-                            " data-href="https://cn.pharmacyonline.com.au/o_customer/security/bindpage?type=cellphone/">
-                            <span class="li-left-wrap">邮箱</span>
-                            <em class="li-right-wrap">
-                                <span>去绑定</span>
-                            </em>
-                        </a>
-                           <i>&gt;</i>
-                                    			</li>
-			<li class="menu-box-li">
-				<a href="">
-					<span class="li-left-wrap">登录密码</span>
-					<em class="li-right-wrap">
-						<span>修改密码</span>
-					</em>
-				</a>
-                   <i>&gt;</i>
-			</li>
-		</ul>
-        <van-button size="large" style="background:#ff7500;color:white;     width: 85%;
-    margin: 5% 7%;">退出登录</van-button>
+        <li class="menu-box-li first">
+          <a href="javascript:void(0);">
+            <span class="li-left-wrap">头像</span>
+            <em class="li-right-wrap">
+              <img
+                class="little-userImg"
+                src="https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/customer/default_user.png"
+                alt
+              >
+            </em>
+          </a>
+        </li>
+        <li class="menu-box-li">
+          <a href>
+            <span class="li-left-wrap">昵称</span>
+            <em class="li-right-wrap">
+              <span>1552876861</span>
+            </em>
+          </a>
+          <i>&gt;</i>
+        </li>
+        <li class="menu-box-li">
+          <a href>
+            <span class="li-left-wrap">绑定手机</span>
+            <em class="li-right-wrap">
+              <span>130****1906</span>
+            </em>
+          </a>
+          <i>&gt;</i>
+        </li>
+        <li class="menu-box-li">
+          <a
+            href="
+                            "
+            data-href="https://cn.pharmacyonline.com.au/o_customer/security/bindpage?type=cellphone/"
+          >
+            <span class="li-left-wrap">邮箱</span>
+            <em class="li-right-wrap">
+              <span>去绑定</span>
+            </em>
+          </a>
+          <i>&gt;</i>
+        </li>
+        <li class="menu-box-li">
+          <a href>
+            <span class="li-left-wrap">登录密码</span>
+            <em class="li-right-wrap">
+              <span>修改密码</span>
+            </em>
+          </a>
+          <i>&gt;</i>
+        </li>
+      </ul>
+      <van-button
+        size="large"
+        style="background:#ff7500;color:white;     width: 85%;
+    margin: 5% 7%;"
+      >退出登录</van-button>
     </section>
   </div>
-
 </template>
 
       
 <script>
+import vanheader from "../components/vanheader";
+
 export default {
   data() {
     return { phone: "", sms: "", password: "" };
+  },
+  components: {
+    vanheader
   }
 };
 </script>

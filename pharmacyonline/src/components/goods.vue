@@ -1,18 +1,18 @@
 <template>
   <div>
     <router-link
-      :to="{name:'/details',query:{id:index}}"
+      :to="{name:'/details',query:{id:item.goods_id}}"
       v-for="(item, index) in data"
       :key="index"
     >
       <van-card
-        num="库存：2"
-        tag="火爆款"
-        price="2.00"
-        desc="描述信息"
-        title="商品标题"
-        :thumb="imageURL"
-        origin-price="10.00"
+        :num="item.spu"
+        :tag="item.origin_desc"
+        :price="item.goods_price"
+        :desc="item.goods_name"
+        :title="item.goods_desc"
+        :thumb="item.goods_image"
+        :origin-price="item.goods_price"
         thumb-link="/details"
       >
         <div slot="footer">
@@ -25,20 +25,26 @@
     </router-link>
   </div>
 </template>
+
+
 <script>
 export default {
   data() {
-    return {
-      data: [2, 1, 1, 2, 3],
-      imageURL:
-        "https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg"
-    };
-  }
+    return {};
+  },
+
+  props: ["data"]
 };
 </script>
+
+
 
 <style lang="less" scoped>
 .van-card__tag {
   top: 100%;
+}
+.van-card {
+  margin: 10px 0;
+  background: #fff;
 }
 </style>

@@ -19,6 +19,7 @@ import userSet_up from '../page/userSet_up.vue'//用户设置
 
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
         { path: '/', name: 'detail', component: home },//首页
         { path: '/home', name: '/home', component: home },//首页
