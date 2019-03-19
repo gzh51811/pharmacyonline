@@ -7,14 +7,13 @@ import axios from 'axios'  //引入
 import Vant from 'vant'// 引入UI框架
 import 'vant/lib/index.css' // 引入UI css
 
+import 'element-ui/lib/theme-chalk/index.css';
+import element from 'element-ui';
+
+
+Vue.use(element)
 Vue.use(Vant) // 使用UI框架
 
-
-
-
-axios.defaults.baseURL = 'http://localhost';
-// axios.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
 
@@ -26,6 +25,6 @@ axios.defaults.headers.post["Content-type"] = "application/json"
 new Vue({
   render: h => h(App),
   router,
-  axios
+  // axios
 
 }).$mount('#app')

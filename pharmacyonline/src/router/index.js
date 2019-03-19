@@ -16,7 +16,7 @@ import goodslist from '../page/goodslist.vue'//商品列表
 
 
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: [
         { path: '/', name: 'detail', component: home },//首页
         { path: '/home', name: '/home', component: home },//首页

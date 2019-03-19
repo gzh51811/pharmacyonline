@@ -2,18 +2,20 @@
   <div>
     <vanheader>商品详情</vanheader>
     <van-swipe class="goods-swipe" :autoplay="3000">
-      <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb">
+      <van-swipe-item class="goodsimg">
+        <img :src="goods.goods_image">
       </van-swipe-item>
     </van-swipe>
+
     <van-cell-group>
       <van-cell>
-        <div class="goods-title">{{ goods.title }}</div>
-        <div class="goods-price">{{ formatPrice(goods.price) }}</div>
+        <div class="goods-title">{{goods.goods_desc}}</div>
+        <div class="goodsmintitle">{{goods.goods_name}}</div>
+        <div class="goods-price">{{goods.current_price_txt}}: ￥{{ goods.goods_price}}</div>
       </van-cell>
       <van-cell class="goods-express">
-        <van-col span="10">运费：{{ goods.express }}</van-col>
-        <van-col span="14">剩余：{{ goods.remain }}</van-col>
+        <van-col span="10">运费：0.00</van-col>
+        <van-col span="14">剩余：{{goods.goods_stock}}</van-col>
       </van-cell>
     </van-cell-group>
 
@@ -74,18 +76,19 @@ export default {
   },
   data() {
     return {
-      goods: {
-        title: "美国伽力果（约680g/3个）",
-        price: 2680,
-        express: "免运费",
-        remain: 19,
-        thumb: [
-          "https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg",
-          "https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg"
-        ]
-      }
+      goods: []
     };
   },
+
+  created() {
+    let goods_id = this.$route.query;
+    this.$axios
+      .get("/hj/pc/goods/getGoodsDetail", { params: { goods_id: goods_id.id } })
+      .then(res => {
+        this.goods = res.data.goodsInfo;
+      });
+  },
+
   methods: {
     formatPrice() {
       // return "¥" + (this.goods.price / 100).toFixed(2);
@@ -105,8 +108,8 @@ export default {
         message: "加入成功"
       });
     },
-     beforeClose(action, done) {
-      if (action === 'confirm') {
+    beforeClose(action, done) {
+      if (action === "confirm") {
         setTimeout(done, 1000);
       } else {
         done();
@@ -136,6 +139,7 @@ export default {
     img {
       width: 100%;
       display: block;
+      margin-top: 12%;
     }
   }
   &-title {
@@ -162,5 +166,8 @@ export default {
 
 .goodsgroup {
   position: unset !important;
+}
+.goodsmintitle {
+  color: #999;
 }
 </style>

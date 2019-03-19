@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:#eef">
     <search>商品列表</search>
 
     <van-tabs v-model="active" @click="show">
@@ -7,7 +7,7 @@
         <selective v-show="ok1" :data="comprehensive" v-on:checked="checked"></selective>
       </van-tab>
 
-      <van-tab title="排序" v-show="ok2">
+      <van-tab title="品牌" v-show="ok2">
         <selective :data="item" v-on:checked="checked"></selective>
       </van-tab>
 
@@ -60,6 +60,21 @@ export default {
         "价格从低到高"
       ]
     };
+  },
+
+  created() {
+    this.$axios
+      .get("/hj/pc/goods/gcGoods", {
+        params: {
+          gc_id: 1,
+          limit: 60,
+          offset: 0
+        }
+      })
+      .then(res => {
+        this.goods = res.data.goods_info;
+        console.log(this.goods);
+      });
   },
 
   methods: {
