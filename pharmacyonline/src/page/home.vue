@@ -3,11 +3,9 @@
     <!-- //搜索框 -->
     <van-search placeholder="请输入搜索关键词"  />
     <!-- 轮播图 -->
-    <van-swipe :autoplay="3000" indicator-color="#ff7500" class="banner">
-       <van-swipe-item class="banner"> <img src="./img/eec00720873c0e08932239dbf1b9989a.jpg" alt=""> </van-swipe-item>
-       <van-swipe-item> <img src="./img/eec00720873c0e08932239dbf1b9989a.jpg" alt=""></van-swipe-item>
-       <van-swipe-item> <img src="./img/eec00720873c0e08932239dbf1b9989a.jpg" alt=""></van-swipe-item>
-       <van-swipe-item> <img src="./img/eec00720873c0e08932239dbf1b9989a.jpg" alt=""></van-swipe-item>
+    <van-swipe :autoplay="3000" indicator-color="#ff7500" class="banner" >
+       <van-swipe-item class="banner" v-for="goods in goodslist" :key="goods.id"> <img :src="goods.image_url" alt=""> </van-swipe-item>
+      
     </van-swipe>
     <!-- 导航栏 -->
     <div class="navs">
@@ -1602,21 +1600,44 @@
 		     	2016 EDC -Internet
 		    </div>
     </div>
-    <vanfooter/>
+    <vanfooder></vanfooder>
   </div>
 </template>
 <script>
-import vanfooter  from  '../components/vanfooter';
+import vanfooder from "../components/vanfooter";
 export default {
   data() {
     return {
-      activeNames: ["1"]
+      activeNames: ["1"],
+      goodslist:[]
     };
   },
   components:{
-      vanfooter
-  }
-};
+      vanfooder
+  },
+  created(){
+      this.$axios.get('/apis/cmsapi/home/banners?website_id=2&client=1',{
+        
+      }).then(res=>{
+        //   console.log(res);
+          let data = res.data;
+        //   console.log(data);
+        this.goodslist= data.data;
+        //  console.log(data.data);
+
+      })
+  },
+    // getData () { 
+    //     this.$axios.get('/apis/cmsapi/home/banners',data).then(res=>{ 
+    //     console.log(res) 
+    //     console.log(21212);
+    //     });
+    // }
+    //  this.$axios.post('/apis/cmsapi/home/banners',data).then(res=>{ 
+    //      console.log(res) 
+    //      console.log(21212);
+    //      });
+}    
 </script>
 
 <style>
@@ -1706,7 +1727,7 @@ export default {
   top: 0.13333rem;
   width: 1.8rem;
   height: 2.94667rem;
-  line-height: 0.32rem;
+  /* line-height: 2.94667rem; */
   background: url(./img/off.png) no-repeat;
   background-size: 100% 100%;
   font-size: 0.26667rem;

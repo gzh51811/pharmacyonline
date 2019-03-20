@@ -64,7 +64,7 @@ export default {
 
   created() {
     this.$axios
-      .get("/hj/pc/goods/gcGoods", {
+      .get("/hjm/pc/goods/gcGoods", {
         params: {
           gc_id: 1,
           limit: 60,

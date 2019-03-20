@@ -1,18 +1,22 @@
 <template>
-  <div class="listselect">
+  <div class="listselect" >
     <h2 class="new-nav">
       <a href>{{toptitle}}</a>
     </h2>
 
     <div class="content">
-      <div class="content-item" data-id="6527" v-for="(item, index) in date" :key="index">
-        <router-link to="/goodslist">
+      <div class="content-item" data-id="6527" v-for="(item, index) in date"
+      :key="index"  >
+        <router-link  :to="{name:'/goodslist',query:{id:item.gc_id}}"
+      
+>
+        <!-- :to="{name:'/goodslist',query:{item.gc_id}}" v-for="(item, index) in date" :key="index"-->
           <img
             onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
             class="category-img first-icon"
-            src="https://po-assets.azoyacdn.com/media/wysiwyg/mb_category/small_image/6527.jpg?imageMogr2/thumbnail/120x120/extent/120x120/background/d2hpdGU="
+            src="https://po-assets.azoyacdn.com/media/wysiwyg/mb_category/small_image/6436.jpg?imageMogr2/thumbnail/120x120/extent/120x120/background/d2hpdGU="
           >
-          <p class="category-name">家庭护理</p>
+          <p class="category-name">{{item.gc_name}}</p>
         </router-link>
       </div>
     </div>
@@ -23,9 +27,18 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // name:[]
+    };
   },
-  props: ["date", "toptitle"]
+  props: ["date", "toptitle"],
+  // console.log("date");
+   created(){
+       console.log("created:", this.date);
+   },
+   mounted(){
+       console.log("mounted:", this.date);
+   }
 };
 </script>
 
