@@ -4,9 +4,9 @@
     <searchs>分类</searchs>
     <van-badge-group :active-key="activeKey" @change="onChange">
       <van-badge :title="titles[0]"></van-badge>
-      <van-badge :title="titles[1]" info="8">新品上线</van-badge>
-      <van-badge :title="titles[2]" info="99">新品上线</van-badge>
-      <van-badge :title="titles[3]" info="99+">新品上线</van-badge>
+      <van-badge :title="titles[1]" info="8"></van-badge>
+      <van-badge :title="titles[2]" info="99"></van-badge>
+      <van-badge :title="titles[3]" info="99+"></van-badge>
     </van-badge-group>
 
     <listselect :date="item" :toptitle="titleinfo"></listselect>

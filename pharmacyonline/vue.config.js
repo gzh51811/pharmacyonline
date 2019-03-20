@@ -20,13 +20,13 @@ module.exports = {
           '^/apis': '/'   //需要rewrite重写的,
         }
       },
-      
-      '^/hj': {
+
+      '^/hjm': {
         // 测试环境
         target: 'https://www.huajuanmall.com',  // 接口域名
         changeOrigin: true,  //是否跨域
         pathRewrite: {
-          '^/hj': '/'   //需要rewrite重写的,
+          '^/hjm': '/'   //需要rewrite重写的,
         }
       }
     }

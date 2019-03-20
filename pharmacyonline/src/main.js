@@ -16,9 +16,11 @@ Vue.use(Vant) // 使用UI框架
 
 
 
-
+var tunhuoji = axios.create({ baseURL: 'http://localhost:12000' })
 
 Vue.prototype.$axios = axios;
+Vue.prototype.$tunhuoji = tunhuoji;
+
 
 axios.defaults.headers.post["Content-type"] = "application/json"
 

@@ -80,12 +80,14 @@ export default {
     };
   },
 
+  // 请求商品信息
   created() {
     let goods_id = this.$route.query;
-    this.$axios
-      .get("/hj/pc/goods/getGoodsDetail", { params: { goods_id: goods_id.id } })
+    this.$tunhuoji
+      .get("/goodslist/details", { params: { id: goods_id } })
       .then(res => {
-        this.goods = res.data.goodsInfo;
+        this.goods = res.data.result[0];
+        console.log(res);
       });
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#eef">
+  <div style="background:#eef;">
     <search>商品列表</search>
 
     <van-tabs v-model="active" @click="show">
@@ -21,7 +21,7 @@
     </van-tabs>
 
     <!-- 单个商品 -->
-    <goods :data="goods"></goods>
+    <goods :data="goods" style="padding-bottom:14%"></goods>
 
     <!-- 购物车图标 -->
     <div class="gouwuche">
@@ -62,19 +62,27 @@ export default {
     };
   },
 
+  // created() {
+  //   this.$axios
+  //     .get("/hjm/pc/goods/gcGoods", {
+  //       params: {
+  //         gc_id: 1,
+  //         limit: 60,
+  //         offset: 0
+  //       }
+  //     })
+  //     .then(res => {
+  //       this.goods = res.data.goods_info;
+  //       console.log(this.goods);
+  //     });
+  // },
+
   created() {
-    this.$axios
-      .get("/hj/pc/goods/gcGoods", {
-        params: {
-          gc_id: 1,
-          limit: 60,
-          offset: 0
-        }
-      })
-      .then(res => {
-        this.goods = res.data.goods_info;
-        console.log(this.goods);
-      });
+    let gc_id = this.$route.query;
+    this.$tunhuoji.get("/goodslist", { params: { id: gc_id } }).then(res => {
+      this.goods = res.data.result;
+      // console.log(res);
+    });
   },
 
   methods: {
