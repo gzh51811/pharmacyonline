@@ -94,8 +94,6 @@
 
         // }),
          this.$axios.get('/jml/pc/pcIndex/class',{
-          //https://www.huajuanmall.com/pc/goods/gcGoods?gc_id=1&limit=15&offset=0
-         
         }).then(res=>{
             // console.log(res);
             let data = res.data.goodsClass;
@@ -105,7 +103,7 @@
          this.onChange(0);
 
         })
-        // this.onChange(0);
+        
       }
    
 
