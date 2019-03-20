@@ -12,6 +12,7 @@
     "element-ui": "^2.6.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "mongodb": "^3.1.13",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vant": "^1.6.9",

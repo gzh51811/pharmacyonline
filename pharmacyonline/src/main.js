@@ -14,14 +14,15 @@ import element from 'element-ui';
 
 Vue.use(element)
 Vue.use(Vant) // 使用UI框架
-Vue.prototype.$axios = axios;
 // axios.defaults.baseURL = '/api'
 
+Vue.prototype.$axios = axios;
+
+var tunhuoji = axios.create({ baseURL: 'http://localhost:12000' })
 
 
+Vue.prototype.$tunhuoji = tunhuoji;
 
-
-// Vue.prototype.$axios = axios;
 
 axios.defaults.headers.post["Content-type"] = "application/json"
 

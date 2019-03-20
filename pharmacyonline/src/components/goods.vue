@@ -17,7 +17,7 @@
       >
         <div slot="footer">
           <!-- <van-button size="mini">立即购买</van-button> -->
-          <van-button size="mini">
+          <van-button size="mini" @click.stop="btn">
             <van-icon name="shopping-cart-o" color="red" size="20px"/>
           </van-button>
         </div>
@@ -32,7 +32,11 @@ export default {
   data() {
     return {};
   },
-
+  methods: {
+    btn() {
+      alert("sd");
+    }
+  },
   props: ["data"]
 };
 </script>
