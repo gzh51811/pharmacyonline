@@ -1,20 +1,16 @@
 <template>
-  <div class="listselect" >
+  <div class="listselect">
     <h2 class="new-nav">
       <a href>{{toptitle}}</a>
     </h2>
 
     <div class="content">
-      <div class="content-item" data-id="6527" v-for="(item, index) in date"
-      :key="index"  >
-        <router-link  :to="{name:'/goodslist',query:{id:item.gc_id}}"
-      
->
-        <!-- :to="{name:'/goodslist',query:{item.gc_id}}" v-for="(item, index) in date" :key="index"-->
+      <div class="content-item" data-id="6527" v-for="(item, index) in date" :key="index">
+        <router-link :to="{name:'/goodslist',query:{id:item.gc_id}}">
           <img
             onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
             class="category-img first-icon"
-            src="https://po-assets.azoyacdn.com/media/wysiwyg/mb_category/small_image/6436.jpg?imageMogr2/thumbnail/120x120/extent/120x120/background/d2hpdGU="
+            src="../assets/image/logo.png"
           >
           <p class="category-name">{{item.gc_name}}</p>
         </router-link>
@@ -33,12 +29,12 @@ export default {
   },
   props: ["date", "toptitle"],
   // console.log("date");
-   created(){
-       console.log("created:", this.date);
-   },
-   mounted(){
-       console.log("mounted:", this.date);
-   }
+  created() {
+    // console.log("created:", this.date);
+  },
+  mounted() {
+    // console.log("mounted:", this.date);
+  }
 };
 </script>
 
@@ -71,7 +67,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     .content-item {
-      border: 1px solid #ccc;
+      border: 1px solid #eee;
       margin: 5% 1% 0;
       width: 30%;
       text-align: center;

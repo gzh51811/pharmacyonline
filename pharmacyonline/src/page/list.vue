@@ -3,7 +3,7 @@
     <!-- 搜索 -->
     <searchs>分类</searchs>
     <van-badge-group :active-key="activeKey" @change="onChange">
-      <van-badge v-for="myname in titles" :title="myname.gc_name" :key="myname"></van-badge>
+      <van-badge v-for="myname in titles" :title="myname.gc_name"></van-badge>
     </van-badge-group>
     <!-- 商品图文 -->
     <listselect :date="item" :toptitle="titleinfo"></listselect>
@@ -27,7 +27,6 @@ export default {
       // goodslist:[]
     };
   },
-  //  "护肤", "面膜", "彩妆", "服装","食品", "健康", "家.Home", "配饰",
   methods: {
     onChange(Key) {
       this.activeKey = Key;
@@ -75,23 +74,28 @@ export default {
     listselect
   },
 
+  // 请求官网
+  // created() {
+  //   this.$axios.get("/jml/pc/pcIndex/class").then(res => {
+  //     // console.log(res);
+  //     let data = res.data.goodsClass;
+  //     // console.log(data);
+  //     this.titles = data;
+  //     // console.log(this.titles[0].children);
+  //     this.onChange(0);
+  //   });
+  //   // this.onChange(0);
+  // },
+
+  // 请求本地
   created() {
-    this.$axios.get("/hjm/pc/pcIndex/class", {}).then(res => {
+    this.$tunhuoji.get("/list").then(res => {
       console.log(res);
-      let data = res.data;
-      //   console.log(data);
-      this.goodslist = data.goods_info;
-      console.log(data.goods_info);
+      this.goods = res.data;
+      let data = res.data.goodsClass;
+      this.titles = data;
+      this.onChange(0);
     });
-    // this.$axios.get("/jml/pc/pcIndex/class").then(res => {
-    //   console.log(res);
-    //   let data = res.data.goodsClass;
-    //   console.log(data);
-    //   this.titles = data;
-    //   console.log(this.titles[0].children);
-    //   this.onChange(0);
-    // });
-    // this.onChange(0);
   }
 };
 </script>

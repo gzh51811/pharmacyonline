@@ -24,9 +24,9 @@
     <goods :data="goods" style="padding-bottom:14%"></goods>
 
     <!-- 购物车图标 -->
-    <div class="gouwuche">
+    <!-- <div class="gouwuche">
       <van-icon name="cart-circle" info="0" size="40px" color="red"/>
-    </div>
+    </div>-->
     <vanfooter></vanfooter>
   </div>
 </template>
@@ -62,25 +62,11 @@ export default {
     };
   },
 
-  // created() {
-  //   this.$axios
-  //     .get("/hjm/pc/goods/gcGoods", {
-  //       params: {
-  //         gc_id: 1,
-  //         limit: 60,
-  //         offset: 0
-  //       }
-  //     })
-  //     .then(res => {
-  //       this.goods = res.data.goods_info;
-  //       console.log(this.goods);
-  //     });
-  // },
-
   created() {
     let gc_id = this.$route.query;
+    console.log(gc_id);
     this.$tunhuoji.get("/goodslist", { params: { id: gc_id } }).then(res => {
-      this.goods = res.data.result;
+      this.goods = res.data;
       // console.log(res);
     });
   },
@@ -116,13 +102,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.gouwuche {
-  position: fixed;
-  bottom: 50px;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  background: rgb(233, 233, 233);
-  right: 5%;
-}
+// .gouwuche {
+//   position: fixed;
+//   bottom: 50px;
+//   border-radius: 50%;
+//   width: 40px;
+//   height: 40px;
+//   background: rgb(233, 233, 233);
+//   right: 5%;
+// }
 </style>

@@ -9,23 +9,87 @@ const Router = express.Router();
 
 
 
-// 返回列表前端数据
+// // 返回列表前端数据
+// Router.get('/', (req, res) => {
+//     let id = JSON.parse(req.query.id).id;
+//     // console.log(id)
+//     (async () => {
+//         let result = await mongodb.find('goodslist', { "gc_id": id });
+//         res.send({ result });
+//     })();
+// })
+
+// 列表
 Router.get('/', (req, res) => {
-    let id = req.query.id;
-    // console.log(id)
-    (async () => {
-        let result = await mongodb.find('goodslist', { "gc_id": id });
-        res.send({ result });
-    })();
+    let id = JSON.parse(req.query.id).id;
+
+    var options = {
+        method: 'get',
+        url: `https://www.huajuanmall.com/pc/goods/gcGoods?gc_id=${id}&limit=30&offset=0`,
+        form: 'content',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    request(options, async (err, ress, body) => {
+        if (err) {
+            console.log(err)
+        } else {
+
+            let data = JSON.parse(body).goods_info;
+            res.send(data);
+            // console.log(data)
+
+            // let inserts = await mongodb.insert("goodslist", data);
+            // console.log(inserts);
+            // if (inserts) {
+            //     res.send(body);
+            // } else {
+            //     res.send("错误：000000000");
+            // }
+            // console.log(body);
+        }
+    })
+
+
 })
+
+
+
+
+
+
+
+
+
+
 
 // 返回前端详情数据
 Router.get('/details', (req, res) => {
-    let ids = JSON.parse(req.query.id).id;
-    (async () => {
-        let result = await mongodb.find('goodslist', { "goods_id": ids });
-        res.send({ result });
-    })();
+    let goodsid = JSON.parse(req.query.id).id;
+
+    var options = {
+        method: 'get',
+        url: `https://www.huajuanmall.com/pc/goods/getGoodsDetail?goods_id=${goodsid}`,
+        form: 'content',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    request(options, async (err, ress, body) => {
+        if (err) {
+            console.log(err)
+        } else {
+
+            let data = JSON.parse(body).goodsInfo;
+            // console.log(data);
+            res.send(data);
+
+        }
+    })
+
 })
 
 

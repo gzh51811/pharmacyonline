@@ -42,7 +42,7 @@
        <ul class="new-list clear">
         <li>
           <a href="">
-            <img src="img/health.png" alt="">
+            <img src="" alt="">
           </a>
           <a href=""></a>
         </li>

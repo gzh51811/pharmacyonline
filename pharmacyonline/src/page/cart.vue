@@ -1,26 +1,30 @@
 <template>
   <div>
     <vanheader>购物车</vanheader>
+
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
-      <van-checkbox class="card-goods__item" v-for="item in goods" :key="item.id" :name="item.id">
-        <van-card
-          :title="item.title"
-          :desc="item.desc"
-          :num="item.num"
-          :price="formatPrice(item.price)"
-          :thumb="item.thumb"
-        />
+      <div class="goodslist" v-for="(item, index) in goods" :key="index">
+        <van-checkbox class="card-goods__item" :name="item.goods_id">
+          <van-card
+            :title="item.goods_desc"
+            :desc="item.goods_name"
+            :num="item.cart_number"
+            :price="formatPrice(item.goods_price)"
+            :thumb="item.goods_image"
+          />
+        </van-checkbox>
 
         <el-input-number
-          v-model="item.num"
-          @change="handleChange"
+          v-model="item.cart_number"
+          @change="handleChange(item.goods_id,item.cart_number)"
           size="mini"
           :min="1"
           :max="100"
           label
         ></el-input-number>
-      </van-checkbox>
+      </div>
     </van-checkbox-group>
+
     <van-submit-bar
       :price="totalPrice"
       :disabled="!checkedGoods.length"
@@ -50,37 +54,16 @@ export default {
   data() {
     return {
       checkedGoods: [],
-      goods: [
-        {
-          id: "1",
-          title: "进口香蕉",
-          desc: "约250g，2根",
-          price: 200,
-          num: 1,
-          thumb:
-            "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg"
-        },
-        {
-          id: "2",
-          title: "陕西蜜梨",
-          desc: "约600g",
-          price: 690,
-          num: 1,
-          thumb:
-            "https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg"
-        },
-        {
-          id: "3",
-          title: "美国伽力果",
-          desc: "约680g/3个",
-          price: 2680,
-          num: 1,
-          thumb:
-            "https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg"
-        }
-      ],
+      goods: [],
       num1: []
     };
+  },
+
+  // 获取购物车数据
+  created() {
+    this.$tunhuoji.get("/cart/list").then(res => {
+      this.goods = res.data.cartlist;
+    });
   },
 
   computed: {
@@ -93,26 +76,31 @@ export default {
       return this.goods.reduce(
         (total, item) =>
           total +
-          (this.checkedGoods.indexOf(item.id) !== -1
-            ? item.price * item.num
+          (this.checkedGoods.indexOf(item.goods_id) !== -1
+            ? item.goods_price * item.cart_number * 100
             : 0),
         0
       );
     }
   },
+
   methods: {
     formatPrice(price) {
-      return (price / 100).toFixed(2);
+      // console.log(price);
+      return (price / 1).toFixed(2);
     },
 
     onSubmit() {
-      Toast("点击结算");
+      Toast("请稍后。。。。");
     },
 
     // 加减
-    handleChange(value) {
-      this.checkedGoods = [];
-      // console.log(value);
+    handleChange(goods_id, value) {
+      this.$tunhuoji
+        .get("/cart/addnumber", { params: { goods_id, value } })
+        .then(res => {
+          // console.log(res);
+        });
     }
   }
 };
@@ -120,7 +108,7 @@ export default {
 
 <style lang="less">
 .card-goods {
-  padding: 10px 0;
+  padding: 70px 0;
   background-color: #fff;
   &__item {
     position: relative;
@@ -144,15 +132,20 @@ export default {
   }
 }
 .van-submit-bar {
-  bottom: 10% !important;
+  bottom: 7.4% !important;
 }
 .card-goods {
   padding: 46px 0;
 }
 
 .el-input-number {
-  right: 0;
-  right: -191px;
-  top: -61px;
+  position: absolute !important;
+  right: 3px;
+  top: 50px;
+}
+.goodslist {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 0;
 }
 </style>

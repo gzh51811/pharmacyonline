@@ -1,7 +1,5 @@
 const express = require('express');
 
-const ejs = require('ejs');
-
 const app = express();
 
 
@@ -10,11 +8,6 @@ app.all("*", function (req, res, next) {
 
     next();
 })
-
-
-
-app.set('view engine', 'ejs');  //配置ejs模板引擎。ejs只需要配置，不需要引入(express中已经引入)
-app.set('views', __dirname + '/view');
 
 
 

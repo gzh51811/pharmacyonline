@@ -36,7 +36,7 @@
     <van-goods-action class="goodsgroup" style="margin-bottom:60px">
       <van-goods-action-mini-btn icon="chat-o" @click="customer">客服</van-goods-action-mini-btn>
       <van-goods-action-mini-btn icon="cart-o" @click="onClickCart">购物车</van-goods-action-mini-btn>
-      <van-goods-action-big-btn @click="addcart">加入购物车</van-goods-action-big-btn>
+      <van-goods-action-big-btn @click="addcart(goods.goods_id)">加入购物车</van-goods-action-big-btn>
       <van-goods-action-big-btn primary @click="bay">立即购买</van-goods-action-big-btn>
     </van-goods-action>
 
@@ -80,14 +80,13 @@ export default {
     };
   },
 
-  // 请求商品信息
+  // 请求商品详情信息
   created() {
     let goods_id = this.$route.query;
     this.$tunhuoji
       .get("/goodslist/details", { params: { id: goods_id } })
       .then(res => {
-        this.goods = res.data.result[0];
-        console.log(res);
+        this.goods = res.data;
       });
   },
 
@@ -105,9 +104,15 @@ export default {
     customer() {},
 
     // 加入购物车
-    addcart() {
+    addcart(obj) {
       this.$dialog.alert({
         message: "加入成功"
+      });
+
+      let goods_id = obj;
+      // 加入购物车;
+      this.$tunhuoji.get("/cart", { params: { id: goods_id } }).then(res => {
+        // console.log(res);
       });
     },
     beforeClose(action, done) {

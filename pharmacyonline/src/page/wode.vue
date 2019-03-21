@@ -41,6 +41,9 @@
       <van-cell icon="gift-o" title="我收到的礼物" is-link/>
     </van-cell-group>
 
+    <router-link to="/login">
+      <div class="btnlogin">登录</div>
+    </router-link>
     <vanfooter></vanfooter>
   </div>
 </template>
@@ -117,5 +120,14 @@ export default {
       }
     }
   }
+}
+
+.btnlogin {
+  text-align: center;
+  background: #1981d6;
+  color: #fff;
+  padding: 5% 0;
+  position: relative;
+  bottom: -90px;
 }
 </style>
