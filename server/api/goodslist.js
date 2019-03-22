@@ -53,8 +53,33 @@ Router.get('/', (req, res) => {
     })
 
 
-})
+});
 
+Router.get('/a', (req, resa) => {
+    console.log(12121);
+    var options = {
+        method: 'get',
+        url: `https://www.huajuanmall.com/pc/goods/gcGoods?gc_id=1&limit=30&offset=0`,
+        form: 'content',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    request(options, (err, resb, body) => {
+        // console.log(res.body);
+        if (err) {
+            console.log(err)
+        } else {
+
+            // let data = JSON.parse(body).goods_info;
+            resa.send(body);
+
+        }
+    })
+
+
+})
 
 
 
@@ -67,29 +92,11 @@ Router.get('/', (req, res) => {
 
 // 返回前端详情数据
 Router.get('/details', (req, res) => {
-    let goodsid = JSON.parse(req.query.id).id;
-
-    var options = {
-        method: 'get',
-        url: `https://www.huajuanmall.com/pc/goods/getGoodsDetail?goods_id=${goodsid}`,
-        form: 'content',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    };
-
-    request(options, async (err, ress, body) => {
-        if (err) {
-            console.log(err)
-        } else {
-
-            let data = JSON.parse(body).goodsInfo;
-            // console.log(data);
-            res.send(data);
-
-        }
-    })
-
+    let ids = JSON.parse(req.query.id).id;
+    (async () => {
+        let result = await mongodb.find('goodslist', { "goods_id": ids });
+        res.send({ result });
+    })();
 })
 
 
