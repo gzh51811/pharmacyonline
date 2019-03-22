@@ -128,6 +128,6 @@ export default {
   color: #fff;
   padding: 5% 0;
   position: relative;
-  bottom: -90px;
+  bottom: -30px;
 }
 </style>

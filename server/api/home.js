@@ -11,22 +11,20 @@ Router.get('/', (req, res) => {
 
     var options = {
         method: 'get',
-        url: `https://www.huajuanmall.com/pc/pcIndex/class`,
+        url: `https://cn.pharmacyonline.com.au/cmsapi/home/banners?website_id=2&client=1`,
         form: 'content',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     };
 
-    request(options, async (err, ress, body) => {
-        // console.log(body)
+    request(options, async (err, res, body) => {
+        // console.log(res.body);
         if (err) {
-            console.log(err)
+            // console.log(err)
         } else {
             res.send(body);
-            let data = JSON.parse(body);
-
-
+            // let data = JSON.parse(body);
         }
     })
 
