@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <vanheader>个人中心</vanheader>
 
     <div class="head-bar">
@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style lang="less">
+.content {
+  padding-bottom: 70px;
+}
 .user {
   &-poster {
     width: 100%;
@@ -106,9 +109,12 @@ export default {
     }
   }
   .zhanghushezhi {
+    font-size: 30px;
     display: inline-block;
     width: 65%;
-    height: 100%;
+    margin: 20px 0;
+    // height: 100%;
+
     float: right;
 
     p {
@@ -123,11 +129,13 @@ export default {
 }
 
 .btnlogin {
+  margin-top: 40px;
+  font-size: 20px;
   text-align: center;
   background: #1981d6;
   color: #fff;
-  padding: 5% 0;
-  position: relative;
-  bottom: -30px;
+  padding: 3% 0;
+  // position: relative;
+  // bottom: -30px;
 }
 </style>

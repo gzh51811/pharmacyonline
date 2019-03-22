@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <vanheader>注册</vanheader>
     <!-- <div class="header">
       <div class="header-button-left">
@@ -54,7 +54,7 @@
 
           <van-button size="large" class="zhuce" style="color:white">立即注册</van-button>
           <router-link to="/login">
-            <van-button size="large" class="zhuce" style="background:white;">已有账号，返回登录</van-button>
+            <van-button size="large" class="backlogin" style="background:white;">已有账号，返回登录</van-button>
           </router-link>
         </van-cell-group>
       </div>
@@ -74,76 +74,73 @@ export default {
 };
 </script>
 
-<style scoped>
-@import "../iconfont/iconfont.css";
-@import "../css/base.css";
+<style lang="less" scoped>
+.content {
+  font-size: 14px;
+}
 a {
   text-decoration: none;
   color: black;
 }
-.header {
-  height: 3.125rem;
-  font-size: 1.25rem;
-  line-height: 3.125rem;
-  display: flex;
-  border-bottom: 1px solid #e0e0e0;
-  justify-content: space-between;
-  padding: 0 6%;
-}
-.header .header-button-left {
-}
-.header h1 {
-  font-size: 1.25rem;
-  font-weight: 400;
-}
+
 .header .header-button-right {
   /* width: 20%; */
 }
 .header-button-right a .iconfont {
   display: inline-block;
-  font-size: 1.25rem;
+  /* font-size: ; */
 }
 .white {
-  height: 3.25rem;
-  width: 100%;
+  height: 60px;
+  /* width: 100%; */
 }
 .main {
-  height: 28.4375rem;
-  margin: 0 1rem;
+  /* height: 28.4375rem; */
+  margin: 0 30px;
 }
 .main .jua {
-  height: 1.875rem;
-  line-height: 1.875rem;
-  margin-bottom: 0.625rem;
-  font-size: 1rem;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 20px;
+  font-size: 15px;
 }
 .jua p em {
   color: #f93;
 }
-.main p {
-  font-size: 0.9rem;
-  margin: 2% 0;
+
+.van-cell-group {
+  .van-cell {
+    margin: 20px 0;
+  }
+  p {
+    color: #999;
+    a {
+      color: #58bc58;
+    }
+  }
+  .backlogin {
+    position: relative;
+    // top: 10px;
+  }
 }
-/* .main p span:nth-of-type(2) {
-  margin-left: 6%;
-} */
 
 input[type="checkbox"] {
   -webkit-appearance: none; /*清除复选框默认样式*/
   background: #fff url(../img/A7NJJb.png); /*复选框的背景图，就是上图*/
-  height: 1.125rem; /*高度*/
+  height: 20px; /*高度*/
   vertical-align: middle;
   background-size: cover;
-  width: 1.125rem;
+  width: 20px;
   margin-right: 6%;
+  border: 1px solid #ccc;
 }
 input[type="checkbox"]:checked {
-  background-position: -2.5rem 0;
+  background-position: 16px 0;
 }
 .main .zhuce {
   background: rgb(255, 117, 0);
-  margin: 2% 5%;
+  margin: 10% 5%;
   width: 87%;
-  border-radius: 0.25rem;
+  border-radius: 10px;
 }
 </style>

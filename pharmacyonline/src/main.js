@@ -6,7 +6,8 @@ import router from './router/index'  //引入路由
 import axios from 'axios'  //引入跨域插件
 import Vant from 'vant'// 引入UI框架
 import 'vant/lib/index.css' // 引入UI css
-
+import 'amfe-flexible';
+// import '../../base/src/main';
 
 import 'element-ui/lib/theme-chalk/index.css';
 import element from 'element-ui';// 引入饿了么UI框架
