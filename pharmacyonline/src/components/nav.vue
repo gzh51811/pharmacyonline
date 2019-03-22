@@ -1,17 +1,18 @@
 <template>
   <div class="navs">
-      
-         <ul class="new-list clear">
-           
-            <li v-for="mynav in navs" :key="mynav.gc_id" >
-                 <router-link  :to="{name:'/goodslist',query:{id:mynav.gc_id}}" >    
-                    <a href="">
-                        <img src="https://po-assets.azoyacdn.com/media/wysiwyg//mb_index_category_img_new/man.png" alt="">
-                    </a>
-                    <a href="">{{mynav.gc_name}}</a>
-                </router-link> 
-                </li>
-         </ul>
+    <ul class="new-list clear">
+      <li v-for="mynav in navs" :key="mynav.gc_id">
+        <router-link :to="{name:'/goodslist',query:{id:mynav.gc_id}}">
+          <a href>
+            <img
+              src="https://po-assets.azoyacdn.com/media/wysiwyg//mb_index_category_img_new/man.png"
+              alt
+            >
+          </a>
+          <a href>{{mynav.gc_name}}</a>
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -24,7 +25,7 @@ export default {
   },
 
   created() {
-    this.$tunhuoji.get("/list", {}).then(res => {
+    this.$tunhuoji.get("/nodelist", {}).then(res => {
       //   console.log(res);
       let data = res.data;
       // //   console.log(data);

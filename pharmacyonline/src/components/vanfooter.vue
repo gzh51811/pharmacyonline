@@ -48,6 +48,6 @@ export default {
 <style lang="less" scoped>
 .footer {
   position: relative;
-  z-index: 10;
+  z-index: 100;
 }
 </style>

@@ -1,27 +1,40 @@
 <template>
-   <div class="discount-container">
-       <div class="discount">
-         <span class="hengxian">一 </span>尖货必入
-         <span class="hengxian"> 一</span>
-       </div>
-       <van-swipe   indicator-color="#ff7500">
-          <van-swipe-item  >
-             <div class="discount-item ajax-product-item left" data-product-symbol="AU$" data-product-id="108275" data-product-ajax-item="108275" v-for="goods in goodslist1">
-                <div class="discount-icon" data-ajax-item="discount" style=""> 
-                    <div class="off"><p data-ajax-item="sales">38%</p>OFF</div>
-                </div> 
-                <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
-                <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
-                    <img onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'" data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU=" :src="goods.goods_image" alt="" title="">
-                    <div class="base-font">
-                       {{goods.goods_name}}               </div>
-                    <div class="base-color">
-                        <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
-                        <span class="price-was" data-ajax-item="price" style="">AU${{goods.goods_hj_price}}</span>
-                    </div>
-                </a>
-              </div>
-              <!-- <div class="discount-item ajax-product-item right" data-product-symbol="AU$" data-product-id="112266" data-product-ajax-item="112266">
+  <div class="discount-container">
+    <div class="discount">
+      <span class="hengxian">一</span>尖货必入
+      <span class="hengxian">一</span>
+    </div>
+    <van-swipe indicator-color="#ff7500">
+      <van-swipe-item>
+        <div
+          class="discount-item ajax-product-item left"
+          data-product-symbol="AU$"
+          data-product-id="108275"
+          data-product-ajax-item="108275"
+          v-for="goods in goodslist1"
+        >
+          <div class="discount-icon" data-ajax-item="discount" style>
+            <div class="off">
+              <p data-ajax-item="sales">38%</p>OFF
+            </div>
+          </div>
+          <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
+          <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
+            <img
+              onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
+              data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU="
+              :src="goods.goods_image"
+              alt
+              title
+            >
+            <div class="base-font">{{goods.goods_name}}</div>
+            <div class="base-color">
+              <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
+              <span class="price-was" data-ajax-item="price" style>AU${{goods.goods_hj_price}}</span>
+            </div>
+          </a>
+        </div>
+        <!-- <div class="discount-item ajax-product-item right" data-product-symbol="AU$" data-product-id="112266" data-product-ajax-item="112266">
                 <div class="discount-icon" data-ajax-item="discount" style=""> 
                     <div class="off"><p data-ajax-item="sales">8%</p>OFF</div>
                 </div> 
@@ -35,59 +48,100 @@
                         <span class="price-was" data-ajax-item="price" style="">AU$25.95</span>
                     </div>
                   </a>
-              </div>   -->
-          </van-swipe-item>
-          <van-swipe-item>
-             <div class="discount-item ajax-product-item left" data-product-symbol="AU$" data-product-id="108275" data-product-ajax-item="108275" v-for="goods in goodslist2">
-                <div class="discount-icon" data-ajax-item="discount" style=""> 
-                    <div class="off"><p data-ajax-item="sales">38%</p>OFF</div>
-                </div> 
-                <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
-                <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
-                    <img onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'" data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU=" :src="goods.goods_image" alt="" title="">
-                    <div class="base-font">
-                       {{goods.goods_name}}               </div>
-                    <div class="base-color">
-                        <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
-                        <span class="price-was" data-ajax-item="price" style="">AU${{goods.goods_hj_price}}</span>
-                    </div>
-                </a>
-              </div>
-          </van-swipe-item>
-          <van-swipe-item>
-             <div class="discount-item ajax-product-item left" data-product-symbol="AU$" data-product-id="108275" data-product-ajax-item="108275" v-for="goods in goodslist3">
-                <div class="discount-icon" data-ajax-item="discount" style=""> 
-                    <div class="off"><p data-ajax-item="sales">38%</p>OFF</div>
-                </div> 
-                <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
-                <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
-                    <img onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'" data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU=" :src="goods.goods_image" alt="" title="">
-                    <div class="base-font">
-                       {{goods.goods_name}}               </div>
-                    <div class="base-color">
-                        <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
-                        <span class="price-was" data-ajax-item="price" style="">AU${{goods.goods_hj_price}}</span>
-                    </div>
-                </a>
-              </div>
-          </van-swipe-item>
-          <van-swipe-item> <div class="discount-item ajax-product-item left" data-product-symbol="AU$" data-product-id="108275" data-product-ajax-item="108275" v-for="goods in goodslist4">
-                <div class="discount-icon" data-ajax-item="discount" style=""> 
-                    <div class="off"><p data-ajax-item="sales">38%</p>OFF</div>
-                </div> 
-                <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
-                <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
-                    <img onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'" data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU=" :src="goods.goods_image" alt="" title="">
-                    <div class="base-font">
-                       {{goods.goods_name}}               </div>
-                    <div class="base-color">
-                        <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
-                        <span class="price-was" data-ajax-item="price" style="">AU${{goods.goods_hj_price}}</span>
-                    </div>
-                </a>
-              </div></van-swipe-item>
-        </van-swipe>
-    </div>
+        </div>-->
+      </van-swipe-item>
+      <van-swipe-item>
+        <div
+          class="discount-item ajax-product-item left"
+          data-product-symbol="AU$"
+          data-product-id="108275"
+          data-product-ajax-item="108275"
+          v-for="goods in goodslist2"
+        >
+          <div class="discount-icon" data-ajax-item="discount" style>
+            <div class="off">
+              <p data-ajax-item="sales">38%</p>OFF
+            </div>
+          </div>
+          <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
+          <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
+            <img
+              onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
+              data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU="
+              :src="goods.goods_image"
+              alt
+              title
+            >
+            <div class="base-font">{{goods.goods_name}}</div>
+            <div class="base-color">
+              <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
+              <span class="price-was" data-ajax-item="price" style>AU${{goods.goods_hj_price}}</span>
+            </div>
+          </a>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
+        <div
+          class="discount-item ajax-product-item left"
+          data-product-symbol="AU$"
+          data-product-id="108275"
+          data-product-ajax-item="108275"
+          v-for="goods in goodslist3"
+        >
+          <div class="discount-icon" data-ajax-item="discount" style>
+            <div class="off">
+              <p data-ajax-item="sales">38%</p>OFF
+            </div>
+          </div>
+          <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
+          <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
+            <img
+              onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
+              data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU="
+              :src="goods.goods_image"
+              alt
+              title
+            >
+            <div class="base-font">{{goods.goods_name}}</div>
+            <div class="base-color">
+              <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
+              <span class="price-was" data-ajax-item="price" style>AU${{goods.goods_hj_price}}</span>
+            </div>
+          </a>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
+        <div
+          class="discount-item ajax-product-item left"
+          data-product-symbol="AU$"
+          data-product-id="108275"
+          data-product-ajax-item="108275"
+          v-for="goods in goodslist4"
+        >
+          <div class="discount-icon" data-ajax-item="discount" style>
+            <div class="off">
+              <p data-ajax-item="sales">38%</p>OFF
+            </div>
+          </div>
+          <p class="product-outstock" data-ajax-item="out-stock" style="display:none;">已售罄</p>
+          <a href="https://cn.pharmacyonline.com.au/product/1108275.html">
+            <img
+              onerror="this.src='https://po-assets.azoyacdn.com/skin/frontend/PlumTree/po_mb_v2/images/placeholder.jpg'"
+              data-original="https://po-assets.azoyacdn.com/media/catalog/product/3/5/354392/swisse-ultiboost-liver-detox-tab-x-120_1.jpg?imageMogr2/thumbnail/325x325/extent/325x325/background/d2hpdGU="
+              :src="goods.goods_image"
+              alt
+              title
+            >
+            <div class="base-font">{{goods.goods_name}}</div>
+            <div class="base-color">
+              <span class="price-now" data-ajax-item="final_price">AU${{goods.goods_price}}</span>
+              <span class="price-was" data-ajax-item="price" style>AU${{goods.goods_hj_price}}</span>
+            </div>
+          </a>
+        </div>
+      </van-swipe-item>
+    </van-swipe>
+  </div>
 </template>
 
 <script>
@@ -103,7 +157,7 @@ export default {
   },
 
   created() {
-    this.$tunhuoji.get("/goodslist/a", {}).then(res => {
+    this.$tunhuoji.get("/nodegoodslist/a", {}).then(res => {
       let data = res.data;
       console.log(data);
       this.goodslist1 = data.goods_info.slice(10, 12);

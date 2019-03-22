@@ -32,8 +32,8 @@ Router.use('/nodegoodslist', goodslist);  //商品列表页
 // Router.use('/commodityEditor', commodityEditor);  //商品编辑
 // Router.use('/category', category);  //分类管理
 // Router.use('/token', token);  //token验证
-Router.use('/home', home);
-Router.use('/banan', banan);
+Router.use('/nodehome', home);
+Router.use('/nodebanan', banan);
 
 
 module.exports = Router;

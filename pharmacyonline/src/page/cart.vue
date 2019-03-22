@@ -97,7 +97,7 @@ export default {
     // 加减
     handleChange(goods_id, value) {
       this.$tunhuoji
-        .get("/nodecart/addnumber", { params: { goods_id, value } })
+        .get("/nodenodecart/addnumber", { params: { goods_id, value } })
         .then(res => {
           // console.log(res);
         });
