@@ -9,7 +9,7 @@ const request = require('request');
 
 // 加入购物车
 Router.get('/', (req, res) => {
-    let goodsid = JSON.parse(req.query.id);
+    var goodsid = JSON.parse(req.query.id);
     var options = {
         method: 'get',
         url: `https://www.huajuanmall.com/pc/goods/getGoodsDetail?goods_id=${goodsid}`,
@@ -19,22 +19,23 @@ Router.get('/', (req, res) => {
         }
     };
 
-    request(options, async (err, res, body) => {
+    request(options, async (err, ress, body) => {
         if (err) {
             console.log(err)
         } else {
             let data = JSON.parse(body).goodsInfo;
+            // console.log(goodsid);
 
-            let findresult = await mongodb.find('cart', { "goods_id": goodsid });
+            let findresult = await mongodb.find('cart', { 'goods_id': `${goodsid}` });
             if (findresult.length != 0) {
-                let number = ((findresult[0].number) + 1);
+                let number = ((findresult[0].cart_number) + 1) * 1;
                 // console.log(number);
-                let result = await mongodb.update('cart', { "goods_id": goodsid }, { $set: { "cart_number": number } });
-                res.send({ result });
+                let result = await mongodb.update('cart', { "goods_id": `${goodsid}` }, { $set: { "cart_number": number } });
+                ress.send({ result });
             } else {
                 data['cart_number'] = 1;
                 let inserts = await mongodb.insert("cart", data);
-                res.send({ inserts });
+                ress.send({ inserts });
             }
         }
     })

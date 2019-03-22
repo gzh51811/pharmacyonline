@@ -1,10 +1,17 @@
+const CleanWebpackPlugin = require("clean-webpack-plugin")  //清除多余文件
+
 module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: []
-    }
+    },
+
+    Options: [
+      new CleanWebpackPlugin()//清除多余文件
+    ]
   },
+
 
 
   devServer: {

@@ -89,7 +89,7 @@ export default {
 
   // 请求本地
   created() {
-    this.$tunhuoji.get("/list").then(res => {
+    this.$tunhuoji.get("/nodelist").then(res => {
       console.log(res);
       this.goods = res.data;
       let data = res.data.goodsClass;

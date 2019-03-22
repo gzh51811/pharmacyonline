@@ -38,9 +38,11 @@ export default {
     btn(obj) {
       let goods_id = obj;
       // 加入购物车;
-      this.$tunhuoji.get("/cart", { params: { id: goods_id } }).then(res => {
-        // console.log(res);
-      });
+      this.$tunhuoji
+        .get("/nodecart", { params: { id: goods_id } })
+        .then(res => {
+          // console.log(res);
+        });
 
       // 弹出弹框
       this.show = true;

@@ -20,12 +20,13 @@ export default {
 
   // 获取购物车总条数
   created() {
-    this.$tunhuoji.get("/cart/list").then(res => {
+    this.$tunhuoji.get("/nodecart/list").then(res => {
       this.cart_number = res.data.cartlist.length;
     });
   },
   methods: {
     pathall() {
+      // console.log(this.active);
       switch (this.active) {
         case 0:
           this.$router.push({ path: "/home" });

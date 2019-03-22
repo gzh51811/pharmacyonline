@@ -21,11 +21,11 @@ const goodslist = require('./goodslist.js');
 
 
 
-Router.use('/list', list); //调到首页
+Router.use('/nodelist', list); //调到首页
 // Router.use('/adminList', adminListRouter); //调到用户列表
 // Router.use('/loginout', loginoutRouter);  //退出
-Router.use('/cart', cart); //调到登录
-Router.use('/goodslist', goodslist);  //商品列表页
+Router.use('/nodecart', cart); //调到登录
+Router.use('/nodegoodslist', goodslist);  //商品列表页
 // Router.use('/commodityEditor', commodityEditor);  //商品编辑
 // Router.use('/category', category);  //分类管理
 // Router.use('/token', token);  //token验证

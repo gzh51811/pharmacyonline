@@ -65,10 +65,12 @@ export default {
   created() {
     let gc_id = this.$route.query;
     console.log(gc_id);
-    this.$tunhuoji.get("/goodslist", { params: { id: gc_id } }).then(res => {
-      this.goods = res.data;
-      // console.log(res);
-    });
+    this.$tunhuoji
+      .get("/nodegoodslist", { params: { id: gc_id } })
+      .then(res => {
+        this.goods = res.data;
+        // console.log(res);
+      });
   },
 
   methods: {

@@ -61,7 +61,7 @@ export default {
 
   // 获取购物车数据
   created() {
-    this.$tunhuoji.get("/cart/list").then(res => {
+    this.$tunhuoji.get("/nodecart/list").then(res => {
       this.goods = res.data.cartlist;
     });
   },
@@ -97,7 +97,7 @@ export default {
     // 加减
     handleChange(goods_id, value) {
       this.$tunhuoji
-        .get("/cart/addnumber", { params: { goods_id, value } })
+        .get("/nodecart/addnumber", { params: { goods_id, value } })
         .then(res => {
           // console.log(res);
         });
@@ -132,10 +132,12 @@ export default {
   }
 }
 .van-submit-bar {
-  bottom: 7.4% !important;
+  bottom: 8% !important;
+  padding-bottom: 6%;
+  background: #fff;
 }
 .card-goods {
-  padding: 46px 0;
+  padding: 46px 0 40%;
 }
 
 .el-input-number {
