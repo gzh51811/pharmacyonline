@@ -8,7 +8,7 @@
     <!-- 商品图文 -->
     <listselect :date="item" :toptitle="titleinfo"></listselect>
     <!-- 底部 -->
-    <vanfooter/>
+    <vanfooter :data="goodsnumber"/>
   </div>
 </template>
 
@@ -23,8 +23,8 @@ export default {
       activeKey: 0,
       item: [],
       titles: [],
-      titleinfo: "护肤"
-      // goodslist:[]
+      titleinfo: "护肤",
+      goodsnumber: ""
     };
   },
   methods: {
@@ -95,6 +95,11 @@ export default {
       let data = res.data.goodsClass;
       this.titles = data;
       this.onChange(0);
+    });
+
+    // 获取购物车总条数
+    this.$tunhuoji.get("/nodecart/list").then(res => {
+      this.goodsnumber = res.data.cartlist.length;
     });
   }
 };

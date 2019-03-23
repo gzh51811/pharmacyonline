@@ -20,7 +20,8 @@ Vue.use(Vant) // 使用UI框架
 
 Vue.prototype.$axios = axios;
 
-var tunhuoji = axios.create({ baseURL: 'http://106.13.51.209:12000' })
+// var tunhuoji = axios.create({ baseURL: 'http://106.13.51.209:12000' })
+var tunhuoji = axios.create({ baseURL: 'http://localhost:12000' })
 
 
 Vue.prototype.$tunhuoji = tunhuoji;
@@ -34,3 +35,5 @@ new Vue({
   // axios
 
 }).$mount('#app')
+
+

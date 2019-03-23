@@ -14,6 +14,8 @@
           />
         </van-checkbox>
 
+        <span class="del" type="warning" @click.stop="btn(item.goods_id,index)">删除</span>
+
         <el-input-number
           v-model="item.cart_number"
           @change="handleChange(item.goods_id,item.cart_number)"
@@ -32,7 +34,7 @@
       @submit="onSubmit"
     />
 
-    <vanfooter/>
+    <vanfooter :data="goodsnumber"/>
   </div>
 </template>
 
@@ -55,7 +57,8 @@ export default {
     return {
       checkedGoods: [],
       goods: [],
-      num1: []
+      num1: [],
+      goodsnumber: "0"
     };
   },
 
@@ -63,6 +66,7 @@ export default {
   created() {
     this.$tunhuoji.get("/nodecart/list").then(res => {
       this.goods = res.data.cartlist;
+      this.goodsnumber = this.goods.length;
     });
   },
 
@@ -97,9 +101,20 @@ export default {
     // 加减
     handleChange(goods_id, value) {
       this.$tunhuoji
-        .get("/nodenodecart/addnumber", { params: { goods_id, value } })
+        .get("/nodecart/addnumber", { params: { goods_id, value } })
         .then(res => {
           // console.log(res);
+        });
+    },
+
+    // 删除
+    btn(goods_id, index) {
+      this.goods.splice(index, 1);
+      this.goodsnumber = this.goods.length;
+      this.$tunhuoji
+        .get("/nodecart/del", { params: { goods_id } })
+        .then(res => {
+          console.log(res);
         });
     }
   }
@@ -132,7 +147,7 @@ export default {
   }
 }
 .van-submit-bar {
-  bottom: 8% !important;
+  bottom: 7% !important;
   padding-bottom: 6%;
   background: #fff;
 }
@@ -149,5 +164,19 @@ export default {
   position: relative;
   box-sizing: border-box;
   padding: 5px 0;
+}
+// 删除
+.del {
+  padding: 4px;
+  text-align: center;
+  background: #f44;
+  font-size: 10px;
+  color: #fff;
+  line-height: 10px;
+  position: absolute;
+  z-index: 11px;
+  top: 78px;
+  left: 140px;
+  border-radius: 4px;
 }
 </style>

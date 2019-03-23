@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detailscenter">
     <vanheader>商品详情</vanheader>
     <van-swipe class="goods-swipe" :autoplay="3000">
       <van-swipe-item class="goodsimg">
@@ -84,9 +84,12 @@ export default {
   created() {
     let goods_id = this.$route.query;
     this.$tunhuoji
-      .get("/goodslist/details", { params: { id: goods_id } })
+      .get("/nodegoodslist/details", { params: { id: goods_id } })
       .then(res => {
-        this.goods = res.data;
+        let {
+          data: { goodsInfo }
+        } = res;
+        this.goods = goodsInfo;
       });
   },
 
@@ -111,9 +114,11 @@ export default {
 
       let goods_id = obj;
       // 加入购物车;
-      this.$tunhuoji.get("/cart", { params: { id: goods_id } }).then(res => {
-        // console.log(res);
-      });
+      this.$tunhuoji
+        .get("/nodecart/addnumber", { params: { id: goods_id } })
+        .then(res => {
+          // console.log(res);
+        });
     },
     beforeClose(action, done) {
       if (action === "confirm") {
@@ -141,7 +146,7 @@ export default {
 
 <style lang="less">
 .goods {
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   &-swipe {
     img {
       width: 100%;
@@ -176,5 +181,17 @@ export default {
 }
 .goodsmintitle {
   color: #999;
+}
+// .detailscenter {
+//   margin-bottom: 60px;
+// }
+.van-goods-action {
+  position: fixed !important;
+  padding-bottom: 10px;
+  background: #fff;
+  bottom: -5px !important;
+}
+.detailscenter {
+  margin-bottom: 140px;
 }
 </style>

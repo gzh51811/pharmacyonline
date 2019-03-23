@@ -18,6 +18,7 @@
         <button @click.stop="btn(item.goods_id)">
           <van-icon name="like" color="red" size="40px"/>
         </button>
+
         <van-popup v-model="show" position="top" :overlay="false">
           <p class="tankuang">加入成功</p>
         </van-popup>
@@ -28,10 +29,13 @@
 
 
 <script>
+import Vue from "vue";
+
 export default {
   data() {
     return {
-      show: false
+      show: false,
+      goodsnumber: ""
     };
   },
   methods: {
@@ -40,15 +44,19 @@ export default {
       // 加入购物车;
       this.$tunhuoji
         .get("/nodecart", { params: { id: goods_id } })
-        .then(res => {
-          // console.log(res);
-        });
+        .then(res => {});
 
       // 弹出弹框
       this.show = true;
       // 弹框1秒后关闭
       setTimeout(() => {
         this.show = false;
+
+        this.$tunhuoji.get("/nodecart/list").then(res => {
+          // this.goodsnumber = ;
+          console.log(res.data.cartlist.length);
+          this.$emit("snumber", res.data.cartlist.length);
+        });
       }, 1000);
     }
   },

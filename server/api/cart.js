@@ -64,6 +64,19 @@ Router.get('/addnumber', (req, res) => {
 })
 
 
+//删除购物车
+Router.get('/del', (req, res) => {
+    let goodsid = req.query.goods_id;
+
+    // console.log(goodsid)
+    (async () => {
+        let result = await mongodb.delete('cart', { "goods_id": goodsid });
+        res.send({ result });
+    })();
+
+})
+
+
 
 
 

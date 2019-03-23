@@ -21,13 +21,13 @@
     </van-tabs>
 
     <!-- 单个商品 -->
-    <goods :data="goods" style="padding-bottom:14%"></goods>
+    <goods :data="goods" style="padding-bottom:14%" v-on:snumber="snumber"></goods>
 
     <!-- 购物车图标 -->
     <!-- <div class="gouwuche">
       <van-icon name="cart-circle" info="0" size="40px" color="red"/>
     </div>-->
-    <vanfooter></vanfooter>
+    <vanfooter :data="goodsnumber"></vanfooter>
   </div>
 </template>
 
@@ -51,6 +51,7 @@ export default {
       ok3: false,
       ok4: false,
       goods: [],
+      goodsnumber: "",
       active: 0,
       item: ["综合排序", "销量从高到低", "价格从高到低", "价格从低到高"],
       comprehensive: [
@@ -69,11 +70,18 @@ export default {
       .get("/nodegoodslist", { params: { id: gc_id } })
       .then(res => {
         this.goods = res.data;
-        // console.log(res);
       });
+
+    // 获取购物车总条数
+    this.$tunhuoji.get("/nodecart/list").then(res => {
+      this.goodsnumber = res.data.cartlist.length;
+    });
   },
 
   methods: {
+    snumber(value) {
+      this.goodsnumber = value;
+    },
     show() {
       switch (this.active) {
         case 0:
