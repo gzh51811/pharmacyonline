@@ -41,15 +41,15 @@ export default {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  height: 8rem;
+  height: 200px;
   background: #fff;
   text-align: center;
 }
 .new-list li img {
   display: block;
-  height: 1.8rem;
-  margin: 0.13333rem 1.9rem;
-  margin-top: 0.4rem;
+  height: 68px;
+  margin: 1px 13px;
+  /* margin-top: 5px; */
 }
 
 .new-list {
@@ -64,11 +64,11 @@ export default {
 }
 .new-list li {
   width: 25%;
-  height: 4rem;
+  height: 100px;
   text-align: center;
 }
 .new-list li a {
-  font-size: 0.26667rem;
+  font-size: 14px;
   display: block;
   color: #666;
   overflow: hidden;
